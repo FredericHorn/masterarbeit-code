@@ -102,8 +102,14 @@ def minimieren(L_m_kmm):
 
         model.addLConstr(expr, GRB.GREATER_EQUAL, k - γ[0] + 1)
 
-    # Der Wert von γ soll minimiert werden
-    obj_expr = γ[0]
+    # Der Wert von γ und die Anzahl der Korrekturen mit Gleichheit sollen minimiert werden
+    obj_expr = gp.LinExpr()
+    for i in range(len(L_m_kmm)):
+        for l in range(k):
+            # Beachte, dass 0.0001 < k * |L_m_kmm| für alle betrachteten Fälle
+            obj_expr -= 0.0001 * λ[l * len(L_m_kmm) + i]
+    obj_expr += γ[0]
+
     model.setObjective(obj_expr, GRB.MINIMIZE)
 
     # Optimiert das Modell
