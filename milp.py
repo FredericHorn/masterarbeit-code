@@ -1,4 +1,5 @@
-# Entspricht dem MILP im Abschnitt 6.2.1 der Masterarbeit von Frederic Horn
+# Code-Anlage 2 für die Masterarbeit von Frederic Horn
+# Entspricht dem MILP im Abschnitt 6.2.1
 
 # Gurobi wird genutzt, um das gemischt-ganzzahlige lineare Optimierungsproblem zu lösen
 import gurobipy as gp
